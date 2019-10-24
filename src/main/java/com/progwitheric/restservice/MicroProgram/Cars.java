@@ -1,6 +1,16 @@
 package com.progwitheric.restservice.MicroProgram;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="marques")
 public class Cars {
+
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String model;

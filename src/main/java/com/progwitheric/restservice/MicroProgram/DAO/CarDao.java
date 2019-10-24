@@ -1,13 +1,12 @@
 package com.progwitheric.restservice.MicroProgram.DAO;
 
 import com.progwitheric.restservice.MicroProgram.Cars;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface CarDao {
-    public List<Cars>findAll();
+@Repository
+public interface CarDao extends JpaRepository<Cars, Integer> {
     public Cars findById(int id);
-    public Cars save(Cars car);
-    public void delete(int id);
-    public void update(Cars newCar);
 }

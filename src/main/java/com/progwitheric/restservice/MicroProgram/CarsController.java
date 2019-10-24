@@ -13,7 +13,7 @@ public class CarsController {
     private CarDao carDao;
 
     @RequestMapping(value = "/voitures", method = RequestMethod.GET)
-    public List<Cars> listVoitures() {
+    public Iterable<Cars> listVoitures() {
         return carDao.findAll();
     }
 
@@ -29,12 +29,12 @@ public class CarsController {
 
     @DeleteMapping(value = "/voitures/{id}")
     public void deleteCar(@PathVariable int id){
-        carDao.delete(id);
+        Cars car = carDao.findById(id);
+        carDao.delete(car);
     }
 
     @PutMapping(value = "/voitures")
-    public Cars updateCar(@RequestBody Cars upCar){
-        carDao.update(upCar);
-        return carDao.findById(upCar.getId());
+    public void updateCar(@RequestBody Cars upCar){
+        carDao.save(upCar);
     }
 }
